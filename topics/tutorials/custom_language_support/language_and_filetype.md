@@ -9,23 +9,23 @@
 
 </chunk>
 
-The IntelliJ Platform determines file type by examining the name of a file.
-Each language has [Language](upsource:///platform/core-api/src/com/intellij/lang/Language.java) and [LanguageFileType](upsource:///platform/core-api/src/com/intellij/openapi/fileTypes/LanguageFileType.java) objects defining the language.
-Register the `LanguageFileType` with the IntelliJ Platform in the plugin configuration file.
+IntelliJ平台通过检查文件的名称来确定文件类型。
+每种语言都有  [Language](upsource:///platform/core-api/src/com/intellij/lang/Language.java)  和 [LanguageFileType](upsource:///platform/core-api/src/com/intellij/openapi/fileTypes/LanguageFileType.java)  对象来定义语言。
+在插件配置文件中注册 `LanguageFileType` 到IntelliJ平台。
 
-**Reference**: [](registering_file_type.md)
+**引用**: [注册文件类型](registering_file_type.md)
 
-## Define the Language
-The language implemented in this tutorial is named "Simple" - note the case of the name.
-The `SimpleLanguage` class is defined in the `org.intellij.sdk.language` package of the `simple_language_plugin` code sample:
+## 定义语言
+本教程中实现的语言名为“Simple”——注意名称的大小写。
+`SimpleLanguage` 类定义在代码示例 `simple_language_plugin` 中的 `org.intellij.sdk.language` 包里面。
 
 ```java
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLanguage.java"}
 
-## Define an Icon
-The [icon](https://github.com/JetBrains/intellij-sdk-code-samples/blob/main/simple_language_plugin/src/main/resources/icons/jar-gray.png) for the Simple Language is defined by the `SimpleIcons` class.
-Please see [](work_with_icons_and_images.md) for details on how to define and use icons.
+## 定义一个图标
+图标 [icon](https://github.com/JetBrains/intellij-sdk-code-samples/blob/main/simple_language_plugin/src/main/resources/icons/jar-gray.png) 被定义在 `SimpleIcons` 类中.
+请参照 [使用图标和图像](work_with_icons_and_images.md) 更多关于定义和使用图标细节。
 
 ```java
 ```

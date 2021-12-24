@@ -2,35 +2,35 @@
 
 <!-- Copyright 2000-2021 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
-In this tutorial we will add support for a [.properties](https://en.wikipedia.org/wiki/.properties) language and its usages within Java code.
+在本教程中，我们将添加对 [.properties](https://en.wikipedia.org/wiki/.properties) 语言和它在Java中的用法的支持。
 
- >  IntelliJ Platform support for custom languages is discussed in more depth in the [Custom Language Support](custom_language_support.md) section.
-> Corresponding parts are linked under **Reference** on top of each page in this tutorial.
- >
+> IntelliJ平台对自定义语言的支持可参考 [自定义语言支持](custom_language_support.md) 部分。
+> 相应的部分链接在本教程每个页面顶部的**Reference**下。
+>
  {type="tip"}
 
 
- > The complete and fully working example plugin used in this tutorial is the [`simple_language_plugin`](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin) code sample.
- >
+> 本教程中使用的完整且完全工作的示例插件是  [`simple_language_plugin`](https://github.com/JetBrains/intellij-sdk-code-samples/tree/main/simple_language_plugin)
+>
  {type="note"}
 
-This a step-by-step tutorial, and it requires completing each step, in order:
+这是一个循序渐进的教程，需要按照以下顺序完成每个步骤:
 
-*  [](prerequisites.md)
-*  [](language_and_filetype.md)
-*  [](grammar_and_parser.md)
-*  [](lexer_and_parser_definition.md)
-*  [](syntax_highlighter_and_color_settings_page.md)
-*  [](psi_helper_and_utilities.md)
-*  [](annotator.md)
-*  [](line_marker_provider.md)
-*  [](completion_contributor.md)
-*  [](reference_contributor.md)
-*  [](find_usages_provider.md)
-*  [](folding_builder.md)
-*  [](go_to_symbol_contributor.md)
-*  [](structure_view_factory.md)
-*  [](formatter.md)
-*  [](code_style_settings.md)
-*  [](commenter.md)
-*  [](quick_fix.md)
+*  [准备工作](prerequisites.md)
+*  [语言和文件类型](language_and_filetype.md)
+*  [语法和解析器](grammar_and_parser.md)
+*  [词法和解析器定义](lexer_and_parser_definition.md)
+*  [高亮显示和颜色设置页面](syntax_highlighter_and_color_settings_page.md)
+*  [psi帮助工具](psi_helper_and_utilities.md)
+*  [注解](annotator.md)
+*  [线标记提供器](line_marker_provider.md)
+*  [自动补全](completion_contributor.md)
+*  [参考](reference_contributor.md)
+*  [查找引用](find_usages_provider.md)
+*  [折叠生成器](folding_builder.md)
+*  [导航特性](go_to_symbol_contributor.md)
+*  [结构视图工场](structure_view_factory.md)
+*  [格式化程序](formatter.md)
+*  [代码风格设置](code_style_settings.md)
+*  [代码注释](commenter.md)
+*  [快速修复](quick_fix.md)

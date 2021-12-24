@@ -2,46 +2,44 @@
 
 <!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
-The IntelliJ Platform is not a product in and of itself but provides a platform for building IDEs.
-It is used to power JetBrains products such as [IntelliJ IDEA](https://www.jetbrains.com/idea/).
-It is also Open Source and can be used by third parties to build IDEs, such as [Android Studio](https://developer.android.com/studio/index.html) from Google.
+IntelliJ平台本身并不是一个产品，而是为构建IDE提供一个平台。它被用作推动JetBrains产品，例如：[IntelliJ IDEA](https://www.jetbrains.com/idea/) 。
+它是开源的，可以被第三方构建IDE使用，例如谷歌的 [Android Studio](https://developer.android.com/studio/index.html) 。
 
-The IntelliJ Platform provides all of the infrastructures that these IDEs need to provide rich language tooling support.
-It is a component-driven, cross-platform JVM based application host with a high-level user interface toolkit for creating tool windows, tree views, and lists (supporting fast search) as well as popup menus and dialogs.
+IntelliJ平台提供所有IDE需要提供的语言工具支持。
+它是组件驱动、跨平台的基于JVM应用程序，带有高级用户界面工具包，可用来创建工具窗口，树视图和列表视图（支持快速搜索），还有弹出菜单和对话框。
 
-The IntelliJ Platform has a full-text editor with abstract implementations of syntax highlighting, code folding, code completion, and other rich text editing features. 
-An image editor is also included.
 
-Furthermore, it includes open APIs to build standard IDE functionality, such as a project model and a build system.
-It also provides an infrastructure for a rich debugging experience, with language-agnostic advanced breakpoint support, call stacks, watch windows, and expression evaluation.
+IntelliJ平台拥有完整的富文本编辑器实现，包括语法高亮，代码折叠，代码自动完，还有图片编辑器等等。
 
-But the IntelliJ Platform's real power comes from the Program Structure Interface (PSI).
-It is a set of functionalities used to parse files, build rich syntactic and semantic models of the code, and build indexes from this data.
-PSI powers a lot of functionality, from quick navigating to files, types, and symbols, to the contents of code completion windows and find usages, code inspections, and code rewriting, for quick fixes or refactorings, as well as many other features.
+而且，它提供了开放的api接口来构建标准的IDE功能，如项目模型和构建系统。
+它还为丰富的调试体验提供了基础设施，包括与语言无关的高级断点支持、调用堆栈、监视窗口和表达式求值。
 
-The IntelliJ Platform includes parsers and a PSI model for many languages, and its extensible nature means that it is possible to add support for other languages.
+但是IntelliJ平台的真正力量来自于程序结构接口(PSI)。
+它是一组用于解析文件、构建丰富的代码语法和语义模型的功能，并从这些数据构建索引。
+PSI提供了很多功能，从快速导航到文件、类型和符号，到代码完成窗口的内容，以及查找使用、代码检查和代码重写，以快速修复或重构，以及许多其他特性。
 
-## Plugins
+IntelliJ平台包括许多语言的解析器和PSI模型，它的可扩展特性意味着它可以添加对其他语言的支持。
 
-Products built on the IntelliJ Platform are extensible applications, with the platform being responsible for creating components and the injection of dependencies into classes.
-The IntelliJ Platform fully supports plugins, and JetBrains hosts the [JetBrains Plugin Repository](https://plugins.jetbrains.com) can be used to distribute plugins that support one or more of the products.
-It is also possible to distribute plugins using [Custom Plugin Repositories](update_plugins_format.md).
+## 插件
 
-Plugins can extend the platform in many ways, from adding a simple menu item to adding support for a complete language, build system, and debugger.
-Many of the existing functionality in the IntelliJ Platform is written as plugins that can be included or excluded depending on the needs of the end product.
-See the [Quick Start Guide](basics.md) for more details.
+构建在IntelliJ平台上的产品是可扩展的应用程序，平台负责创建组件和将依赖注入到类中。
+IntelliJ平台支持插件，JetBrains提供的[插件仓库](https://plugins.jetbrains.com) 用来分发支持一个或多个产品的插件。
 
-The IntelliJ Platform is a JVM application, written mostly in Java and [Kotlin](https://kotlinlang.org).
-You should be experienced with these languages, large libraries written in them, their associated tooling, and large open-source projects to write plugins for products based on the IntelliJ Platform.
-At this time, it's not possible to extend the IntelliJ Platform in non-JVM languages.
+插件可以以多种方式扩展平台，从添加一个简单的菜单项到添加对完整语言、构建系统和调试器的支持。
+IntelliJ平台中的许多现有功能都是作为插件编写的，可以根据最终产品的需要来包含或排除这些插件。
+详情请查看[快速开始](basics.md)
 
-## Open Source
+IntelliJ平台是一个JVM应用程序，大部分是使用Java和[Kotlin](https://kotlinlang.org)语言编写的。
+您应该熟悉这些语言、用它们编写的大型库、相关工具，以及为基于IntelliJ平台的产品编写插件的大型开源项目。
+目前，在非jvm语言中扩展IntelliJ平台是不可能的。
+
+## 开源
 
 The IntelliJ Platform is Open Source, under the [Apache License](upsource:///LICENSE.txt), and [hosted on GitHub](https://github.com/JetBrains/intellij-community).
 
 While this guide refers to the IntelliJ Platform as a separate entity, there is no "IntelliJ Platform" GitHub repository.
 Instead, the platform is considered to be an almost complete overlap with the IntelliJ IDEA Community Edition, which is a free and Open Source version of IntelliJ IDEA Ultimate (the GitHub repository linked above is the [JetBrains/intellij-community](https://github.com/JetBrains/intellij-community) repository).
-Please note: starting with 2021.1 release, some plugins bundled with IntelliJ IDEA Community Edition are not open-source.                                                            
+Please note: starting with 2021.1 release, some plugins bundled with IntelliJ IDEA Community Edition are not open-source.
 
 The version of the IntelliJ Platform is defined by the version of the corresponding release of IntelliJ IDEA Community Edition.
 For example, to build a plugin against IntelliJ IDEA (2019.1.1), build #191.6707.61 means specifying the same build number tag to get the correct Intellij Platform files from the `intellij-community` repository.

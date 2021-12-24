@@ -4,19 +4,19 @@
 
 <include src="language_and_filetype.md" include-id="custom_language_tutorial_header"></include>
 
-## Download and Install IntelliJ IDEA
-Download and install either IntelliJ IDEA Ultimate or IntelliJ IDEA Community Edition from [here](https://www.jetbrains.com/idea/download/).
+## 下载并安装IntelliJ IDEA
+载并安装IntelliJ IDEA Ultimate或IntelliJ IDEA社区版  [点击下载](https://www.jetbrains.com/idea/download/) 。
 
-## Check out Community Edition Source Files
- >  While not required, having the full sources of the platform and all bundled plugins available for browsing allows finding related implementations.
+## 查看社区版源文件
+ > 虽然不是必需的，但拥有平台的全部资源和所有可浏览的绑定插件，就可以找到相关的实现。
  >
  {type="note"}
 
-Download the IntelliJ IDEA Community Edition source files as described in the IntelliJ IDEA Community Edition [README](upsource:///README.md) file.
+按照IntelliJ IDEA社区版的描述下载IntelliJ IDEA社区版的源文件 [README](upsource:///README.md) 文件.
 
-## Install Required Plugins
-Make sure that the bundled *Plugin DevKit* plugin is enabled.
-Install and enable [Grammar-Kit](https://plugins.jetbrains.com/plugin/6606-grammar-kit) and [PsiViewer](https://plugins.jetbrains.com/plugin/227-psiviewer) plugins.
+## 安装必要的插件
+确保已启用绑定的*Plugin DevKit* 插件。
+安装并启用 [Grammar-Kit](https://plugins.jetbrains.com/plugin/6606-grammar-kit) 和 [PsiViewer](https://plugins.jetbrains.com/plugin/227-psiviewer) 插件.
 
-## Create a Project
-Create an [IntelliJ Platform Plugin project](gradle_prerequisites.md).
+## 创建项目
+创建一个 [IntelliJ 平台插件项目](gradle_prerequisites.md).

@@ -2,55 +2,55 @@
 
 <!-- Copyright 2000-2021 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
-IntelliJ Platform is a powerful platform for building development tools targeting *any* language.
-Most of the IDE features consist of language-independent (provided by the platform) and language-specific parts.
-Supporting a particular feature for a new language can be achieved with a small amount of effort:
-a plugin must implement only the language-specific part.
+IntelliJ Platform是一个强大的平台，可以构建针对*任何*语言的开发工具。
+IDE的大部分特性由独立于语言的部分(由平台提供)和特定于语言的部分组成。
+支持一种新语言的特定特性只需要少量的努力:
+插件必须只实现特定于语言的部分。
 
-## Reference
+## 引言
 
-This part of the documentation explains the main concepts of the *Language API* and guides you through the sequence of steps that are usually required to develop a custom language plugin.
-You can obtain additional information about the *Language API* from the JavaDoc comments for the *Language API* classes and from the Properties language support source code, which is part of the [IntelliJ IDEA Community Edition](https://github.com/JetBrains/intellij-community) source code.
+文档的这一部分解释了*Language API*的主要概念，并指导您完成开发自定义语言插件通常需要的一系列步骤。
+您可以从*Language API*类的JavaDoc注释和Properties语言支持源代码中获得有关*Language API*的额外信息, 是 [IntelliJ IDEA Community Edition](https://github.com/JetBrains/intellij-community) 源代码的一部分.
 
-## Tutorial
+## 教程
 
-If you prefer a full example to the detailed descriptions offered in this section, please check out a step-by-step tutorial on how to create custom language support for _Simple Language_:
-[Custom Language Support Tutorial](custom_language_support_tutorial.md).
-Corresponding steps from the tutorial are linked under the "**Example**" section on each page of this reference.
+如果您喜欢完整的示例而不是本节提供的详细描述，请查看关于如何为 _Simple language_ 创建自定义语言支持的循序渐进的教程:
+[自定义语言支持教程](custom_language_support_tutorial.md).
+教程的相应步骤链接在本参考资料每页的“**示例**”部分下。
 
-The webinar [How We Built Comma, the Raku IDE, on the IntelliJ Platform](https://blog.jetbrains.com/platform/2020/01/webinar-recording-how-we-built-comma-the-raku-ide-on-the-intellij-platform/) offers an excellent introduction as well.
+ [How We Built Comma, the Raku IDE, on the IntelliJ Platform](https://blog.jetbrains.com/platform/2020/01/webinar-recording-how-we-built-comma-the-raku-ide-on-the-intellij-platform/) 也提供了一个很好的介绍。
 
 <video href="zDP9uUMYrvs" title="How We Built Comma, the Raku IDE, on the IntelliJ Platform" width="300"/>
 
-## Topics
+## 主题
 
-### Initial Setup
+### 初始设定
 
-* [](registering_file_type.md)
-* [](implementing_lexer.md)
-* [](implementing_parser_and_psi.md)
-* [](syntax_highlighting_and_error_highlighting.md)
+* [注册文件类型](registering_file_type.md)
+* [实现词法分析程序](implementing_lexer.md)
+* [实现解析器和psi](implementing_parser_and_psi.md)
+* [语法突出显示和错误突出显示](syntax_highlighting_and_error_highlighting.md)
 
 ### Resolving and Completion
 
-* [](references_and_resolve.md)
-* [](symbols.md)
-* [](declarations_and_references.md)
-* [](navigation.md)
-* [](code_completion.md)
+* [引用和解决](references_and_resolve.md)
+* [符号](symbols.md)
+* [声明和引用](declarations_and_references.md)
+* [导航](navigation.md)
+* [代码自动完成](code_completion.md)
 
-### Refactoring
+### 重构
 
-* [](find_usages.md)
-* [](rename_refactoring.md)
-* [](safe_delete_refactoring.md)
+* [查找引用](find_usages.md)
+* [重命名重构](rename_refactoring.md)
+* [安全删除重构](safe_delete_refactoring.md)
 
-### Editor and IDE Features
+### 编辑器和IDE特性
 
-* [](code_formatting.md)
-* [](code_inspections_and_intentions.md)
-* [](structure_view.md)
-* [](surround_with.md)
+* [代码格式化](code_formatting.md)
+* [代码检查和意图](code_inspections_and_intentions.md)
+* [结构视图](structure_view.md)
+* [包裹代码](surround_with.md)
 * [](go_to_class_and_go_to_symbol.md)
 * [](documentation.md)
 * [](additional_minor_features.md)
