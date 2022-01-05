@@ -3,10 +3,6 @@
   <component name="CompilerConfiguration">
     <addNotNullAssertions enabled="false" />
     <wildcardResourcePatterns />
-    <bytecodeTargetLevel>
-      <module name="pycharm" target="1.8" />
-      <module name="pycharm.main" target="1.8" />
-      <module name="pycharm.test" target="1.8" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="11" />
   </component>
 </project>

@@ -2,8 +2,6 @@
 
 <!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
-Products based on the IntelliJ Platform can be modified and adjusted for custom purposes by adding plugins.
-All downloadable plugins are available at the [JetBrains Plugins Repository](https://plugins.jetbrains.com/).
 
 基于IntelliJ平台的产品可以通过添加插件来修改和调整。
 所有可下载的插件都可以在[JetBrains插件仓库](https://plugins.jetbrains.com/) 里下载。

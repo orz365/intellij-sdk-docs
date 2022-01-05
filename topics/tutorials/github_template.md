@@ -2,17 +2,18 @@
 
 <!-- Copyright 2000-2021 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
-[IntelliJ Platform Plugin Template][gh:ippt] is a repository that provides a pure boilerplate template to make it easier to create a new plugin project using the recommended [Gradle setup](gradle_build_system.md).
+[IntelliJ 平台插件模板][gh:ippt] 仓库提供纯样板模板，来使Gradle创建插件项目更加容易。
 
-The main goal of this template is to speed up the setup phase of plugin development for both new and experienced developers by preconfiguring the project scaffold and CI, linking to the proper documentation pages, and keeping everything organized.
 
-GitHub Template allows you to create a new repository from the scaffold without having to copy and paste content, clone repositories, or clear the history manually.
-All you have to do is click the <shortcut>Use this template</shortcut> button on the GitHub project page (you must be logged in with your GitHub account).
-After that, the GitHub Actions workflow will be triggered to override or remove any template-specific configurations, such as the plugin name, current changelog, etc.
+这个模板的主要目标是通过预先配置项目脚手架和CI，链接到适当的文档页面，并保持一切有序，从而加快插件开发的设置阶段，无论对新手还是有经验的开发人员都是如此。
 
-Once this is complete, the project is ready to be cloned to your local environment and opened with [IntelliJ IDEA][jb:download-ij].
+GitHub 模板允许你从脚手架中创建一个新的存储库，而不需要复制和粘贴内容，克隆存储库，或者手动清除历史记录。
+你所要做的就是点击GitHub项目页中的 <shortcut>Use this template</shortcut> 按钮 (必须登录GitHub账户).
+然后，GitHub Actions工作流将被触发，以覆盖或删除任何模板特定的配置，例如插件名称、当前更新日志等。
 
-For more details, please refer to the [IntelliJ Platform Plugin Template][gh:ippt] project documentation.
+完成此操作后，就可以将项目克隆到本地环境并打开 [IntelliJ IDEA][jb:download-ij]。
+
+有关详情，请参阅 [IntelliJ 平台插件模板][gh:ippt] 项目文档。
 
 The webinar **Busy plugin developers series. Episode 1** also offers a thorough walk-through.
 <video href="vAlor5-hC0Q" title="Busy plugin developers series. Episode 1"/>

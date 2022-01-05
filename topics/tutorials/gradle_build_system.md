@@ -2,16 +2,16 @@
 
 <!-- Copyright 2000-2021 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
-The [gradle-intellij-plugin](https://github.com/JetBrains/gradle-intellij-plugin) Gradle plugin is the recommended solution for building IntelliJ Platform plugins.
-The plugin takes care of the dependencies of your plugin project - both the base IDE and other plugin dependencies.
-It provides tasks to run the IDE with your plugin and to package and publish your plugin to the [JetBrains Plugins Repository](https://plugins.jetbrains.com).
-To make sure that a plugin is not affected by [API changes](api_changes_list.md), which may happen between major releases of the platform, you can quickly verify your plugin against other IDEs and releases.
+[gradle-intellij-plugin](https://github.com/JetBrains/gradle-intellij-plugin) Gradle插件是构建IntelliJ平台插件的推荐解决方案。
+这个插件会照顾你插件项目的依赖关系 - 基本IDE和其他插件依赖。
+它提供了任务来运行带有插件的IDE，并打包和发布插件到 [JetBrains 插件仓库](https://plugins.jetbrains.com).
+确保插件不受 [API changes](api_changes_list.md), 可能发生在平台的主要发行之间, 你可以通过其他ide和版本快速验证你的插件。
 
- >  [IntelliJ Platform Plugin Template](github_template.md) makes it easier to create and maintain your IDE plugins, having the Gradle plugin already integrated and CI covered with GitHub Actions.
+ >  [IntelliJ 平台插件模板](github_template.md) 使创建和维护你的IDE插件变得更容易, 已经集成了Gradle插件，并且使用GitHub Actions覆盖了CI。
  >
  {type="tip"}
 
- >  If a new plugin will be Scala-based, a dedicated SBT plugin [sbt-idea-plugin](https://github.com/JetBrains/sbt-idea-plugin) is available.
+ >  如果一个新的插件将是基于scala的, 专用的SBT插件 [sbt-idea-plugin](https://github.com/JetBrains/sbt-idea-plugin) 是可用的。
  >
  {type="note"}
 
