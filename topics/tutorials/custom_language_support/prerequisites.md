@@ -19,4 +19,4 @@
 安装并启用 [Grammar-Kit](https://plugins.jetbrains.com/plugin/6606-grammar-kit) 和 [PsiViewer](https://plugins.jetbrains.com/plugin/227-psiviewer) 插件.
 
 ## 创建项目
-创建一个 [IntelliJ 平台插件项目](gradle_prerequisites.md).
+创建一个 [IntelliJ 平台插件项目](../build_system/gradle_prerequisites.md).

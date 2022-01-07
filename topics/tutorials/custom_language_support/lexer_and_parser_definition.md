@@ -24,19 +24,19 @@ Or the following line in the project's `build.gradle.kts` file:
 
 Reload the Gradle project for changes to take effect.
 
-## Define a Lexer
-Define a `Simple.flex` file with rules for the Simple Language lexer, as demonstrated in `org.intellij.sdk.language.Simple.flex`.
+## 定义 Lexer
+定义一个 `Simple.flex` 文件，包括Simple Language的词法解析规则，就放在 `org.intellij.sdk.language.Simple.flex` 包下。
 
 ```java
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/Simple.flex"}
 
-## Generate a Lexer Class
-Now generate a lexer class via **JFlex Generator** from the context menu on `Simple.flex` file.
+## 生成 Lexer 类
+现在通过 **JFlex Generator** 生成一个词法解析类，点击 `Simple.flex` 文件的右键就可以看到此项.
 
-The Grammar-Kit plugin uses the JFlex lexer generation.
-When running for the first time, JFlex prompts for a destination folder to download the JFlex library and skeleton.
-Choose the project root directory, for example `code_samples/simple_language_plugin`.
+ Grammar-Kit 插件使用 JFlex 词法解析生成器.
+第一次运行的时候，JFlex提示要下载JFlex库和框架的目标文件夹。
+ 选择项目根目录，例如 `code_samples/simple_language_plugin`.
 
 After that, the IDE generates the lexer under the `gen` directory, for example in `simple_language_plugin/src/main/gen/org/intellij/sdk/language/SimpleLexer`.
 
@@ -103,4 +103,4 @@ tab : \u0009
 
 Now open the *PsiViewer* tool window and check how the lexer breaks the content of the file into tokens, and the parser parsed the tokens into PSI elements.
 
-![PSI Elements](psi_elements.png)
+![PSI Elements](../../../images/tutorials/custom_language_support/img/psi_elements.png)

@@ -16,14 +16,14 @@
  {type="note"}
 
 
- > Please make sure to always upgrade `gradle-intellij-plugin` to the latest version [![GitHub Release](https://img.shields.io/github/release/jetbrains/gradle-intellij-plugin.svg?style=flat-square)](https://github.com/jetbrains/gradle-intellij-plugin/releases)
+ > 请确保始终将“gradle-intellij-plugin”升级到最新版本 [![GitHub Release](https://img.shields.io/github/release/jetbrains/gradle-intellij-plugin.svg?style=flat-square)](https://github.com/jetbrains/gradle-intellij-plugin/releases)
  >
- > See [What's New & Upgrade Instructions](https://lp.jetbrains.com/gradle-intellij-plugin) for upgrading from pre-1.0 versions.
+ > 参阅 [What's New & Upgrade Instructions](https://lp.jetbrains.com/gradle-intellij-plugin) 用于从1.0之前的版本升级。
  >
  {type="note"}
 
-Below are a series of guides to developing and deploying Gradle-based IntelliJ Platform Plugins:
+下面是一系列开发和部署基于gradle的IntelliJ平台插件的指南:
 
-* [Getting Started with Gradle](gradle_prerequisites.md)
-* [Configuring Gradle Projects](gradle_guide.md)
-* [Publishing Plugins with Gradle](deployment.md)
+* [开始使用Gradle](build_system/gradle_prerequisites.md)
+* [Configuring Gradle Projects](build_system/gradle_guide.md)
+* [Publishing Plugins with Gradle](build_system/deployment.md)

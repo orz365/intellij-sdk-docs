@@ -4,29 +4,55 @@
 
 <include src="language_and_filetype.md" include-id="custom_language_tutorial_header"></include>
 
-In order for the IntelliJ Platform to parse a Simple Language file, tokens and elements must be defined based on [`IElementType`](upsource:///platform/core-api/src/com/intellij/psi/tree/IElementType.java).
-The Simple Language grammar must also be defined to generate a parser.
+为了让IntelliJ平台解析一个简单语言文件，标记和元素必须基于 [IElementType](upsource:///platform/core-api/src/com/intellij/psi/tree/IElementType.java) 来定义。
+还必须定义Simple Language语法来生成解析器。
+
+
 
 **Reference**:
-- [](implementing_lexer.md)
-- [](implementing_parser_and_psi.md)
+- [implementing_lexer](implementing_lexer.md)
+- [implementing_parser_and_psi](implementing_parser_and_psi.md)
 
-## Define a Token Type
-Create `SimpleTokenType` in the `org.intellij.sdk.language.psi` package (see the `simple_language_plugin` code sample) by subclassing `IElementType`.
+## 定义 Token Type
+创建 `SimpleTokenType` 类，放在`org.intellij.sdk.language.psi` 包下 (参看 `simple_language_plugin` 代码示例) ，实现 `IElementType` 接口.
 
 ```java
+package org.intellij.sdk.language.psi;
+import com.intellij.psi.tree.IElementType;
+import org.intellij.sdk.language.SimpleLanguage;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+public class SimpleTokenType extends IElementType {
+  public SimpleTokenType(@NotNull @NonNls String debugName) {
+    super(debugName, SimpleLanguage.INSTANCE);
+  }
+  @Override
+  public String toString() {
+    return "SimpleTokenType." + super.toString();
+  }
+}
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleTokenType.java"}
 
-## Define an Element Type
+## 定义 Element Type
 Create the `SimpleElementType` in the `org.intellij.sdk.language.psi` package by subclassing `IElementType`.
 
 ```java
+package org.intellij.sdk.language.psi;
+import com.intellij.psi.tree.IElementType;
+import org.intellij.sdk.language.SimpleLanguage;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+public class SimpleElementType extends IElementType {
+  public SimpleElementType(@NotNull @NonNls String debugName) {
+    super(debugName, SimpleLanguage.INSTANCE);
+  }
+}
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleElementType.java"}
 
-## Define the Grammar
-Define a grammar for the Simple Language in the `com/intellij/sdk/language/Simple.bnf` file.
+## 定义 Grammar
+为Simple Language定义语法，在 `com/intellij/sdk/language/Simple.bnf` 文件中定义.
 
 ```properties
 {
@@ -51,23 +77,24 @@ private item_ ::= (property|COMMENT|CRLF)
 property ::= (KEY? SEPARATOR VALUE?) | KEY
 ```
 
-As shown, a Simple Language file can contain properties, comments, and line breaks.
+如同所示， Simple Language 文件包括属性，注释和换行符。
 
-Please see [Grammar Kit](https://github.com/JetBrains/Grammar-Kit) documentation for more details on BNF syntax.
+请看 [Grammar Kit](https://github.com/JetBrains/Grammar-Kit) 文档查看更多关于 [BNF]() 语法信息。
 
-The grammar defines the flexibility of the support for a language.
-The above grammar specifies that a property may have or may not have key and value.
-This flexibility allows the IntelliJ Platform to recognize incorrectly defined properties and provide corresponding code analysis and quick-fixes.
+语法定义了对语言支持的灵活性。
+上面的语法指定一个属性可以有键和值，也可以没有。
+这种灵活性允许IntelliJ平台识别不正确定义的属性，并提供相应的代码分析和快速修复。
 
-Note that the `SimpleTypes` class in the `elementTypeHolderClass` attribute above specifies the name of a class that gets generated from the grammar; it doesn't exist at this point.
+注意 `SimpleTypes` 类存在于 `elementTypeHolderClass` 属性定义的值，
+它指定的从这个语法中生成的类的名称；现在这个类还是不存在的。
 
-## Generate a Parser
-Now that the grammar is defined generate a parser with PSI classes via **Generate Parser Code** from the context menu on the *Simple.bnf* file.
-This step generates a parser and PSI elements in the `/src/main/gen` folder of the project.
-Mark this folder as *Generated Sources Root* and make sure everything compiles without errors.
+## 生成 Parser
+既然已经定义了语法，就用PSI类生成一个解析器，通过右键点击 *Simple.bnf* 文件， **Generate Parser Code** 项.
+这一步生成一个解析器和PSI元素，生成目录为 `/src/main/gen`。
+将此文件夹标记为 *Generated Sources Root*，并确保所有内容的编译都没有错误。
 
- >  Gradle plugin [gradle-grammarkit-plugin](https://github.com/JetBrains/gradle-grammar-kit-plugin) can be used alternatively.
+ >  Gradle 插件 [gradle-grammarkit-plugin](https://github.com/JetBrains/gradle-grammar-kit-plugin) 可替换使用。
  >
  {type="tip"}
 
-![Parser](generated_parser.png){width="800"}
+![Parser](../../../images/tutorials/custom_language_support/img/generated_parser.png){width="800"}

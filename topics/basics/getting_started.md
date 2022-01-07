@@ -32,21 +32,21 @@ Gradle工作流提供了几个优势：
 
 ## 使用GitHub模板
 
-* [使用GitHub模板开发插件](github_template.md)
+* [使用GitHub模板开发插件](../tutorials/github_template.md)
 
 ## 使用Gradle
 
-* [使用Gradle开发插件](gradle_build_system.md)
-    * [开始使用Gradle](gradle_prerequisites.md)
-    * [配置Gradle项目](gradle_guide.md)
-    * [用Gradle发布插件](deployment.md)
+* [使用Gradle开发插件](../tutorials/gradle_build_system.md)
+    * [开始使用Gradle](../tutorials/build_system/gradle_prerequisites.md)
+    * [配置Gradle项目](../tutorials/build_system/gradle_guide.md)
+    * [用Gradle发布插件](../tutorials/build_system/deployment.md)
 
 ## 使用DevKit
 
-* [使用DevKit开发插件](using_dev_kit.md)
-    * [建立开发环境](setting_up_environment.md)
-    * [创建插件项目](creating_plugin_project.md)
-    * [创建 Actions](working_with_custom_actions.md)
-    * [运行和调试插件](running_and_debugging_a_plugin.md)
-    * [部署插件](deploying_plugin.md)
-    * [发布插件](publishing_plugin.md)
+* [使用DevKit开发插件](getting_started/using_dev_kit.md)
+    * [建立开发环境](getting_started/setting_up_environment.md)
+    * [创建插件项目](getting_started/creating_plugin_project.md)
+    * [创建 Actions](getting_started/working_with_custom_actions.md)
+    * [运行和调试插件](getting_started/running_and_debugging_a_plugin.md)
+    * [部署插件](getting_started/deploying_plugin.md)
+    * [发布插件](getting_started/publishing_plugin.md)
