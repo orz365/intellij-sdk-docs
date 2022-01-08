@@ -4,17 +4,17 @@
 
 <include src="language_and_filetype.md" include-id="custom_language_tutorial_header"></include>
 
-An `Annotator` helps highlight and annotate any code based on specific rules.
-This section adds annotation functionality to support the Simple Language in the context of Java code.
+ `注解器Annotator` 帮助基于特定规则突出显示和注解任何代码。
+ 本节将在Java代码上下文中添加注释功能以支持简单语言。
 
-**Reference**: [Annotator](syntax_highlighting_and_error_highlighting.md#annotator)
+**引用**: [Annotator](syntax_highlighting_and_error_highlighting.md#annotator)
 
-## Required Project Configuration Changes
-Classes defined in this step of the tutorial depend on `com.intellij.psi.PsiLiteralExpression` (the PSI representation for String literals in Java code) at runtime.
-Using `PsiLiteralExpression` [introduces a dependency](plugin_compatibility.md#modules-specific-to-functionality) on `com.intellij.java`.
+## 所需的项目配置更改 Required Project Configuration Changes
+本教程这一步中定义的类依赖于 `com.intellij.psi.PsiLiteralExpression` (Java代码中字符串字面值的PSI表示) 运行时.
+使用 `PsiLiteralExpression` [introduces a dependency](plugin_compatibility.md#modules-specific-to-functionality) 在 `com.intellij.java`.
 
-Beginning in version 2019.2, a dependency on Java plugin [must be declared explicitly](https://blog.jetbrains.com/platform/2019/06/java-functionality-extracted-as-a-plugin/).
-First, add a dependency on the Java plugin in Gradle build file:
+从2019.2版开始， 依赖于Java插件 [must be declared explicitly](https://blog.jetbrains.com/platform/2019/06/java-functionality-extracted-as-a-plugin/).
+首先，在Gradle构建文件中添加一个对Java插件的依赖:
 
 <tabs>
 <tab title="build.gradle">
@@ -38,19 +38,19 @@ intellij {
 </tab>
 </tabs>
 
-Then, declare the dependency in <path>plugin.xml</path> (use code insight)
+然后，在 <path>plugin.xml</path> 中声明依赖项 (use code insight)
 
 ```xml
   <depends>com.intellij.java</depends>
 ```
 
-## Define an Annotator
-The `SimpleAnnotator` subclasses [`Annotator`](upsource:///platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java).
-Consider a literal string that starts with "simple:" as a prefix of a Simple Language key.
-It isn't part of the Simple Language, but it is a useful convention for detecting Simple Language keys embedded as string literals in other languages, like Java.
-Annotate the `simple:key` literal expression, and differentiate between a well-formed vs. an unresolved property.
+## 定义注解器 Define an Annotator
+ `SimpleAnnotator` 子类 [`Annotator`](upsource:///platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java).
+ 考虑一个以“simple:”开头的字面量字符串作为Simple Language键的前缀。
+ 它不是 Simple Language 的一部分，但它是一种有用的约定，用于检测在其他语言(如Java)中作为字符串字面值嵌入的简单语言键。
+ 注释 `simple:key` 字面表达式，并区分格式良好的属性和未解析的属性。
 
- >  The use of new `AnnotationHolder` syntax starting 2020.2, which uses the builder format.
+ > 从2020.2开始使用新的 `AnnotationHolder` 语法，它使用构建器格式。
  >
  {type="note"}
 
@@ -58,12 +58,16 @@ Annotate the `simple:key` literal expression, and differentiate between a well-f
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleAnnotator.java"}
 
- >  If the above code is copied at this stage of the tutorial, then remove the line below the comment "** Tutorial step 18.3 …" The quick fix class in that line is not defined until later in the tutorial.
+[comment]: <> ( > If the above code is copied at this stage of the tutorial, then remove the line below the comment "** Tutorial step 18.3 …")
+ > 如果复制了当前教程的上述代码，然后删除注释行中带有 "** Tutorial step 18.3 …" 的代码行。
+ >
+ > 这一行中的 `快速修复` 类直到本教程的后面才定义。
  >
  {type="tip"}
 
-## Register the Annotator
-Using the `com.intellij.annotator` extension point in the plugin configuration file, register the Simple Language annotator class with the IntelliJ Platform:
+## 注册注解器 Register the Annotator
+在插件配置文件中，使用 `com.intellij.annotator` 扩展点，
+使用 IntelliJ 平台  注册 Simple Language 注解器类：
 
 ```xml
   <extensions defaultExtensionNs="com.intellij">
@@ -71,11 +75,12 @@ Using the `com.intellij.annotator` extension point in the plugin configuration f
   </extensions>
 ```
 
-## Run the Project
+## 运行项目 Run the Project
 
-Run the plugin by using the Gradle [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin).
+使用Gradle任务 [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin) 运行插件。
 
 As a test, define the following Java file containing a Simple Language `prefix:value` pair:
+作为测试，定义下面的Java文件包含一个 Simple Language 的 `prefix:value` 键值对：
 
 ```java
 public class Test {
@@ -85,6 +90,7 @@ public class Test {
 }
 ```
 
+使用IDE开发实例打开这个java文件，运行 `simple_language_plugin` 来检查IDE是否包含属性：
 Open this Java file in an IDE Development Instance running the `simple_language_plugin` to check if the IDE resolves a property:
 
 ![Annotator](annotator.png){width="800"}

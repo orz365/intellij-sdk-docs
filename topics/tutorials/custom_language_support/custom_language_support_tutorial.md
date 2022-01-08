@@ -22,7 +22,7 @@
 *  [词法和解析器定义](lexer_and_parser_definition.md)
 *  [高亮显示和颜色设置页面](syntax_highlighter_and_color_settings_page.md)
 *  [psi帮助工具](psi_helper_and_utilities.md)
-*  [注解](annotator.md)
+*  [注解器](annotator.md)
 *  [线标记提供器](line_marker_provider.md)
 *  [自动补全](completion_contributor.md)
 *  [参考](reference_contributor.md)
