@@ -4,22 +4,22 @@
 
 <include src="language_and_filetype.md" include-id="custom_language_tutorial_header"></include>
 
-A `FindUsagesProvider` uses a word scanner to build an index of words in every file.
-A scanner breaks the text into words and defines the context for each word.
+`FindUsagesProvider` 使用单词扫描器在每个文件中建立单词的索引。
+扫描器将文本分解成单词，并为每个单词定义上下文。
 
-**Reference**: [](find_usages.md)
+**引用**: [find_usages](find_usages.md)
 
-## Define a Find Usages Provider
-The `SimpleFindUsagesProvider` implements [`FindUsagesProvider`](upsource:///platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java).
-Using the [`DefaultWordsScanner`](upsource:///platform/indexing-api/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java) ensures the scanner implementation is thread-safe.
-See the comments in `FindUsagesProvider` for more information.
+## 定义查找引用提供器 Define a Find Usages Provider
+`SimpleFindUsagesProvider` 实现了 [`FindUsagesProvider`](upsource:///platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java)。
+使用 [`DefaultWordsScanner`](upsource:///platform/indexing-api/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java) 确保扫描器实现是线程安全的。
+请参阅下面代码 `FindUsagesProvider` 的注释来获取更多信息。
 
 ```java
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFindUsagesProvider.java"}
 
-## Register the Find Usages Provider
-The `SimpleFindUsagesProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file using the `com.intellij.lang.findUsagesProvider` extension point.
+## 注册查找引用提供器 Register the Find Usages Provider
+`SimpleFindUsagesProvider` 实现是通过 `com.intellij.lang.findUsagesProvider` 扩展点在插件配置文件中注册到IntelliJ 平台的。
 
 ```xml
   <extensions defaultExtensionNs="com.intellij">
@@ -28,9 +28,9 @@ The `SimpleFindUsagesProvider` implementation is registered with the IntelliJ Pl
   </extensions>
 ```
 
-## Run the Project
-Run the plugin by using the Gradle [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin).
+## 运行项目
+使用Gradle任务 [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin) 运行项目。
 
-The IDE now supports [Find Usages](https://www.jetbrains.com/help/idea/find-highlight-usages.html) for any property with a reference:
+IDE现在支持 [Find Usages](https://www.jetbrains.com/help/idea/find-highlight-usages.html) 对于任意引用属性:
 
-![Find Usages](find_usages.png)
+![Find Usages](../../../images/tutorials/custom_language_support/img/find_usages.png)

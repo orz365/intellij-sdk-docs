@@ -4,29 +4,29 @@
 
 <include src="language_and_filetype.md" include-id="custom_language_tutorial_header"></include>
 
-Code style settings enable defining formatting options.
-A code style settings provider creates an instance of the settings and also creates an options page in settings/preferences.
-This example creates a settings/preferences page that uses the default language code style settings, customized by a language code style settings provider.
+代码样式设置允许定义格式选项。
+代码样式设置提供程序创建一个设置实例，并在设置/首选项中创建一个选项页面。
+此示例创建一个使用默认语言代码样式设置的设置/首选项页面，该设置由语言代码样式设置提供程序自定义。
 
-**Reference**: [Code Style Settings](code_formatting.md#code-style-settings)
+**引用**: [Code Style Settings](code_formatting.md#code-style-settings)
 
-## Define Code Style Settings
-Define a code style settings for Simple Language by subclassing [`CustomCodeStyleSettings`](upsource:///platform/code-style-api/src/com/intellij/psi/codeStyle/CustomCodeStyleSettings.java).
+## 定义代码样式设置
+通过子类化定义 [`CustomCodeStyleSettings`](upsource:///platform/code-style-api/src/com/intellij/psi/codeStyle/CustomCodeStyleSettings.java) Simple Language 的代码样式设置。
 
 ```java
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleCodeStyleSettings.java"}
 
-## Define Code Style Settings Provider
-The code style settings provider gives the IntelliJ Platform a standard way to instantiate `CustomCodeStyleSettings` for the Simple Language.
-Define a code style settings provider for Simple Language by subclassing [`CodeStyleSettingsProvider`](upsource:///platform/lang-api/src/com/intellij/psi/codeStyle/CodeStyleSettingsProvider.java).
+## 定义代码样式设置提供程序
+代码样式设置提供给IntelliJ平台一个标准的方式来实例化 Simple Language 的 `CustomCodeStyleSettings`。
+通过子类化  [`CodeStyleSettingsProvider`](upsource:///platform/lang-api/src/com/intellij/psi/codeStyle/CodeStyleSettingsProvider.java) 定义 Simple Language 的代码样式设置提供程序。
 
 ```java
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleCodeStyleSettingsProvider.java"}
 
-## Register the Code Style Settings Provider
-The `SimpleCodeStyleSettingsProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file using the `com.intellij.codeStyleSettingsProvider` extension point.
+## 注册代码样式设置提供程序
+`SimpleCodeStyleSettingsProvider` 实现使用 `com.intellij.codeStyleSettingsProvider` 扩展点在插件配置文件中注册给IntelliJ平台。
 
 ```xml
   <extensions defaultExtensionNs="com.intellij">
@@ -34,15 +34,16 @@ The `SimpleCodeStyleSettingsProvider` implementation is registered with the Inte
   </extensions>
 ```
 
-## Define the Language Code Style Settings Provider
-Define a code style settings provider for Simple Language by subclassing [`LanguageCodeStyleSettingsProvider`](upsource:///platform/lang-api/src/com/intellij/psi/codeStyle/LanguageCodeStyleSettingsProvider.java), which provides common code style settings for a specific language.
+## 定义语言代码样式设置提供程序
+通过子类化 [`LanguageCodeStyleSettingsProvider`](upsource:///platform/lang-api/src/com/intellij/psi/codeStyle/LanguageCodeStyleSettingsProvider.java)
+为Simple Language 定义一个代码样式设置提供器，用来为特定语言提供通用代码样式设置。
 
 ```java
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleLanguageCodeStyleSettingsProvider.java"}
 
-## Register the Language Code Style Settings Provider
-The `SimpleLanguageCodeStyleSettingsProvider` implementation is registered with the IntelliJ Platform in the plugin configuration file using the `com.intellij.langCodeStyleSettingsProvider` extension point.
+## 注册语言代码样式设置提供程序
+`SimpleLanguageCodeStyleSettingsProvider` 的实现使用`com.intellij.langCodeStyleSettingsProvider` 扩展点在插件配置文件中注册给IntelliJ 平台。
 
 ```xml
  <extensions defaultExtensionNs="com.intellij">
@@ -51,9 +52,9 @@ The `SimpleLanguageCodeStyleSettingsProvider` implementation is registered with 
  </extensions>
 ```
 
-## Run the Project
-Run the plugin by using the Gradle [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin).
+## 运行该项目
+使用Gradle任务 [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin) 运行该项目。
 
-In the IDE Development Instance, open the Simple Language code formatting page: <menupath>Settings/Preferences | Editor | Code Style | Simple</menupath>.
+在IDE开发实例中， 打开 Simple Language 代码格式化页面 : <menupath>Settings/Preferences | Editor | Code Style | Simple</menupath>.
 
-![Code Style Settings](code_style_settings.png)
+![Code Style Settings](../../../images/tutorials/custom_language_support/img/code_style_settings.png)

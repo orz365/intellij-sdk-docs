@@ -4,32 +4,35 @@
 
 <include src="language_and_filetype.md" include-id="custom_language_tutorial_header"></include>
 
-A folding builder identifies the folding regions in the code.
-In this step of the tutorial, the folding builder is used to identify folding regions and replace the regions with specific text.
-Rather than the usual practice of using a folding builder to collapse a class, method, or comments to fewer lines, the folding builder replaces Simple Language keys with their corresponding values.
+折叠构建器标识代码中的折叠区域。
+在本教程的这一步中，折叠生成器用于识别折叠区域，并将这些区域替换为特定的文本。
+与通常使用折叠构建器将类、方法或注释折叠到更少的行不同，折叠构建器用它们对应的值替换了 Simple Language 键值。
 
-## Define a Folding Builder
-The `SimpleFoldingBuilder` replaces usages of properties with their values by default.
-Start by subclassing [`FoldingBuilderEx`](upsource:///platform/core-api/src/com/intellij/lang/folding/FoldingBuilderEx.java)
+## 定义折叠构建器
+`SimpleFoldingBuilder` 默认用属性的值替换属性的用法。
+开始通过子类化 [`FoldingBuilderEx`](upsource:///platform/core-api/src/com/intellij/lang/folding/FoldingBuilderEx.java)
 
-Note that `SimpleFoldingBuilder` also implements [`DumbAware`](upsource:///platform/core-api/src/com/intellij/openapi/project/DumbAware.java), which means the class is allowed to run in dumb mode, when indices are in background update.
+注意 `SimpleFoldingBuilder` 同样实现了 [`DumbAware`](upsource:///platform/core-api/src/com/intellij/openapi/project/DumbAware.java)，
+这意味着当索引在后台更新时，类可以在哑模式(dumb mode)下运行。
 
- >  A folding builder must implement [`DumbAware`](upsource:///platform/core-api/src/com/intellij/openapi/project/DumbAware.java) to function in this tutorial and pass tests.
+ >  折叠构建器必须实现 [`DumbAware`](upsource:///platform/core-api/src/com/intellij/openapi/project/DumbAware.java) 在本教程中运行并通过测试。
  >
  {type="note"}
 
-The `buildFoldRegions()` method searches down a PSI tree from `root` to find all literal expressions containing the [simple prefix](annotator.md#define-an-annotator) `simple:`.
-The remainder of such a string is expected to contain a Simple Language key, and so the text range is stored as a [`FoldingDescriptor`](upsource:///platform/core-api/src/com/intellij/lang/folding/FoldingDescriptor.java).
+`buildFoldRegions()` 方法从 `root` 开始向下搜索 PSI 树，查找包含  [simple 前缀](annotator.md#define-an-annotator) 的所有字面量表达式。
 
-The `getPlaceholderText()` method retrieves the Simple Language value corresponding to the key associated with the (ASTNode) provided.
-The IntelliJ Platform uses the value to substitute for the key when the code gets folded.
+这个字符串的其余部分应该包含一个Simple Language键,
+所以文本范围被存储为 [`FoldingDescriptor`](upsource:///platform/core-api/src/com/intellij/lang/folding/FoldingDescriptor.java).
+
+`getPlaceholderText()` 方法检索与所提供的(ASTNode)相关联的键对应的Simple Language值。
+当代码被折叠时，IntelliJ平台使用这个值来替换key。
 
 ```java
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFoldingBuilder.java"}
 
 ## Register the Folding Builder
-The `SimpleFoldingBuilder` implementation is registered with the IntelliJ Platform in the plugin configuration file using the `com.intellij.lang.foldingBuilder` extension point.
+`SimpleFoldingBuilder`的实现是通过 `com.intellij.lang.foldingBuilder` 扩展点在插件配置文件中注册到IntelliJ平台的。
 
 ```xml
   <extensions defaultExtensionNs="com.intellij">
@@ -38,11 +41,11 @@ The `SimpleFoldingBuilder` implementation is registered with the IntelliJ Platfo
   </extensions>
 ```
 
-## Run the Project
-Run the plugin by using the Gradle [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin).
+## 运行项目
+使用Graldle任务 [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin) 运行项目。
 
-Now when a Java file is opened in the editor, it shows the property's value instead of the key.
-This is because `SimpleFoldingBuilder.isCollapsedByDefault()` always returns `true`.
-Try using **Code \| Folding \| Expand All** to show the key rather than the value.
+现在，当在编辑器中打开Java文件时，它会显示属性的值，而不是键。
+这是因为 `SimpleFoldingBuilder.isCollapsedByDefault()` 总是返回 `true`.
+试着使用 **Code \| Folding \| Expand All** 来显示关键字，而不是关键字的值。
 
-![Folding](folding.png)
+![Folding](../../../images/tutorials/custom_language_support/img/folding.png)

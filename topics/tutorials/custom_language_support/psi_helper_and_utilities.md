@@ -4,7 +4,7 @@
 
 <include src="language_and_filetype.md" include-id="custom_language_tutorial_header"></include>
 
-Helper类和实用程序可以嵌入到由Grammar-Kit生成的代码中。
+辅助类和实用程序可以嵌入到由Grammar-Kit生成的代码中。
 
 ## 为生成的PSI元素定义辅助方法（ Define Helper Methods for Generated PSI Elements）
 PSI类中的自定义方法是单独定义的，Grammar-Kit 将它们嵌入到生成的代码中。

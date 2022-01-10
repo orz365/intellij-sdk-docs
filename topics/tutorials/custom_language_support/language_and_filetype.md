@@ -46,7 +46,7 @@ public class SimpleIcons {
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleIcons.java"}
 
 ## 定义 FileType
-The Simple Language file type is defined by subclassing [`LanguageFileType`](upsource:///platform/core-api/src/com/intellij/openapi/fileTypes/LanguageFileType.java):
+Simple Language 文件类型是通过子类化 [`LanguageFileType`](upsource:///platform/core-api/src/com/intellij/openapi/fileTypes/LanguageFileType.java) 定义的。
 
 ```java
 package org.intellij.sdk.language;
@@ -90,9 +90,9 @@ public class SimpleFileType extends LanguageFileType {
 
 <tab title="2019.2 and later">
 
-Direct registration is possible - no `FileTypeFactory` is required.
+直接注册是可能的 - 没有 `FileTypeFactory` 是必需的。
 
-Instead, the file type is registered via the `com.intellij.fileType` extension point in <path>plugin.xml</path> and registered with <path>*.simple</path> extension:
+文件类型是通过在 <path>plugin.xml</path>中通过`com.intellij.fileType` 扩展点注册的，注册<path>*.simple</path>扩展：
 
 ```xml
   <extensions defaultExtensionNs="com.intellij">

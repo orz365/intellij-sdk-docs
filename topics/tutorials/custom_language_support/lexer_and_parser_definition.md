@@ -91,7 +91,7 @@ public class SimpleFile extends PsiFileBase {
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/psi/SimpleFile.java"}
 
 ## 定义 Parser
-Simple Language 的解析器是通过子类 [`ParserDefinition`](upsource:///platform/core-api/src/com/intellij/lang/ParserDefinition.java) 定义的。
+Simple Language 的解析器是通过子类化 [`ParserDefinition`](upsource:///platform/core-api/src/com/intellij/lang/ParserDefinition.java) 定义的。
 
 ```java
 package org.intellij.sdk.language;

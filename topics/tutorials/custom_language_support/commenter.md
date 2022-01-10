@@ -4,18 +4,18 @@
 
 <include src="language_and_filetype.md" include-id="custom_language_tutorial_header"></include>
 
-A commenter enables the user to comment-out a line of code at the cursor or selected code automatically.
-The [`Commenter`](upsource:///platform/core-api/src/com/intellij/lang/Commenter.java) defines support for **Code \| Comment with Line Comment** and **Code \| Comment with Block Comment** actions.
+注释器使用户能够自动注释掉光标处的一行代码或所选代码。
+ [`注释器`](upsource:///platform/core-api/src/com/intellij/lang/Commenter.java) 定义支持 **Code \| Comment with Line Comment** and **Code \| Comment with Block Comment** 行为.
 
-## Define a Commenter
-The commenter for Simple Language defines the line comment prefix as `#`.
+## 定义注释器
+Simple Language 注释器将行注释前缀定义为 `#`.
 
 ```java
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleCommenter.java"}
 
-## Register the Commenter
-The `SimpleCommenter` implementation is registered in the plugin configuration file using the `com.intellij.lang.commenter` extension point.
+## 注册注释器
+`SimpleCommenter` 的实现使用 `com.intellij.lang.commenter` 扩展点在插件配置文件中注册给IntelliJ平台。
 
 ```xml
   <extensions defaultExtensionNs="com.intellij">
@@ -23,13 +23,13 @@ The `SimpleCommenter` implementation is registered in the plugin configuration f
   </extensions>
 ```
 
-## Run the Project
-Run the plugin by using the Gradle [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin).
+## 运行该项目
+使用Gradle任务 [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin) 运行该项目。
 
-Open the example Simple Language [properties file ](lexer_and_parser_definition.md#run-the-project) in the IDE Development Instance.
-Place the cursor at the `website` line.
-Select **Code \| Comment with Line Comment**.
-The line is converted to a comment.
-Select **Code \| Comment with Line Comment** again, and the comment is converted back to active code.
+打开示例 Simple Language [properties 文件 ](lexer_and_parser_definition.md#run-the-project) 使用IDE开发实例。
+将光标放在 `website` 行.
+选择 **Code \| Comment with Line Comment**.
+该行被转换为注释。
+再次选择 **Code \| Comment with Line Comment** ，注释被转换回活动代码。
 
-![Commenter](commenter.png)
+![Commenter](../../../images/tutorials/custom_language_support/img/commenter.png)

@@ -4,35 +4,34 @@
 
 <include src="language_and_filetype.md" include-id="custom_language_tutorial_header"></include>
 
-The IntelliJ Platform includes a powerful framework for implementing formatting for custom languages.
-A formatter enables reformatting code automatically based on code style settings.
-The formatter controls spaces, indents, wrap, and alignment.
+IntelliJ平台包含一个强大的框架，用于实现自定义语言的格式化。
+格式化程序支持根据代码样式设置自动重新格式化代码。
+格式化程序控制空格、缩进、换行和对齐。
 
-**Reference**: [](code_formatting.md)
+**引用**: [code_formatting](code_formatting.md)
 
-## Define a Block
-The formatting model represents the formatting structure of a file as a tree of [`Block`](upsource:///platform/code-style-api/src/com/intellij/formatting/Block.java) objects, with associated indent, wrap, alignment and spacing settings.
-The goal is to cover each PSI element with such a block.
-Since each block builds its children's blocks, it can generate extra blocks or skip any PSI elements.
-Define `SimpleBlock` based on [`AbstractBlock`](upsource:///platform/code-style-impl/src/com/intellij/psi/formatter/common/AbstractBlock.java).
+## 定义一个块 Define a Block
+格式化模型将文件的格式化结构表示为 [`Block`](upsource:///platform/code-style-api/src/com/intellij/formatting/Block.java) 对象树, 与相关的缩进，换行，对齐和间距设置。
+目标是用这样的块覆盖每个PSI元素。
+因为每个块构建它的子块，它可以生成额外的块或跳过任何PSI元素。
+基于 [`AbstractBlock`](upsource:///platform/code-style-impl/src/com/intellij/psi/formatter/common/AbstractBlock.java) 定义 `SimpleBlock`。
 
 ```java
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleBlock.java"}
 
-## Define a Formatting Model Builder
-Define a formatter that removes extra spaces except for the single spaces around the property separator.
-For example, reformat "foo  = &nbsp;&nbsp;&nbsp;&nbsp;bar" to "foo = bar".
+## 定义一个格式化模型生成器
+定义一个格式化程序，除去属性分隔符周围的单个空格之外的额外空格。
+例如， 格式化 "foo  = &nbsp;&nbsp;&nbsp;&nbsp;bar" 变成 "foo = bar".
 
-Create `SimpleFormattingModelBuilder` by subclassing [`FormattingModelBuilder`](upsource:///platform/code-style-api/src/com/intellij/formatting/FormattingModelBuilder.java).
+创建 `SimpleFormattingModelBuilder` 通过子类化 [`FormattingModelBuilder`](upsource:///platform/code-style-api/src/com/intellij/formatting/FormattingModelBuilder.java).
 
 ```java
 ```
 {src="simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleFormattingModelBuilder.java"}
 
-## Register the Formatter
-The `SimpleFormattingModelBuilder` implementation is registered with the IntelliJ Platform in the plugin configuration file using the `com.intellij.lang.formatter` extension point.
-
+## 格式化程序注册
+`SimpleFormattingModelBuilder` 实现使用 `com.intellij.lang.formatter` 扩展点在插件配置文件中注册给IntelliJ平台。
 ```xml
  <extensions defaultExtensionNs="com.intellij">
     <lang.formatter language="Simple"
@@ -40,11 +39,11 @@ The `SimpleFormattingModelBuilder` implementation is registered with the Intelli
   </extensions>
 ```
 
-## Run the Project
-Run the plugin by using the Gradle [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin).
+## 运行该项目
+使用Gradle任务 [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin) 运行该项目。
 
-Open the example Simple Language [properties file ](lexer_and_parser_definition.md#run-the-project) in the IDE Development Instance.
-Add some extra spaces around the `=` separator between `language` and `English`.
-Reformat the code by selecting **Code \| Show Reformat File Dialog** and choose **Run**.
+打开示例 Simple Language [properties 文件 ](lexer_and_parser_definition.md#run-the-project) 使用IDE开发实例。
+在 `language` 和 `English` 之间的 `=` 两边添加额外的空格分隔符
+重新格式化代码，通过选择 **Code \| Show Reformat File Dialog** and choose **Run**.
 
-![Formatter](formatter.png)
+![Formatter](../../../images/tutorials/custom_language_support/img/formatter.png)

@@ -138,4 +138,4 @@ Simple Language 键、分隔符和突出显示值的颜色分别默认为IDE _La
 在IDE开发实例中， 打开示例 Simple Language 的高亮设置页面: <menupath>Settings/Preferences | Editor | Color Scheme | Simple</menupath>.
 每一个颜色初始化值都继承了 <control>Language Defaults</control> 的值。
 
-![Color Settings Page](color_settings_page.png)
+![Color Settings Page](../../../images/tutorials/custom_language_support/img/color_settings_page.png)

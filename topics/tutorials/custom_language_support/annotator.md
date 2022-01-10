@@ -80,7 +80,7 @@ intellij {
 使用Gradle任务 [runIde task](gradle_prerequisites.md#running-a-simple-gradle-based-intellij-platform-plugin) 运行插件。
 
 As a test, define the following Java file containing a Simple Language `prefix:value` pair:
-作为测试，定义下面的Java文件包含一个 Simple Language 的 `prefix:value` 键值对：
+测试，定义下面的Java文件包含一个 Simple Language 的 `prefix:value` 键值对：
 
 ```java
 public class Test {
@@ -93,10 +93,10 @@ public class Test {
 使用IDE开发实例打开这个java文件，运行 `simple_language_plugin` 来检查IDE是否包含属性：
 Open this Java file in an IDE Development Instance running the `simple_language_plugin` to check if the IDE resolves a property:
 
-![Annotator](annotator.png){width="800"}
+![Annotator](../../../images/tutorials/custom_language_support/img/annotator.png){width="800"}
 
-If the property is an undefined name, the annotator flags the code with an error.
+如果属性是一个未定义的名称，注释器会用错误标记代码。
 
-![Unresolved property](unresolved_property.png){width="800"}
+![Unresolved property](../../../images/tutorials/custom_language_support/img/unresolved_property.png){width="800"}
 
-Try changing the Simple Language [color settings](syntax_highlighter_and_color_settings_page.md#run-the-project) to differentiate the annotation from the default language color settings.
+改变Simple Language 的 [颜色设置](syntax_highlighter_and_color_settings_page.md#run-the-project) 来区分注解器的颜色。
