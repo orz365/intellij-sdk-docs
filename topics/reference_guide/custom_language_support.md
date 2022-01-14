@@ -26,14 +26,14 @@ IDE的大部分特性由独立于语言的部分(由平台提供)和特定于语
 
 ### 初始设定
 
-* [注册文件类型](registering_file_type.md)
-* [实现词法分析程序](implementing_lexer.md)
-* [实现解析器和psi](implementing_parser_and_psi.md)
-* [语法突出显示和错误突出显示](syntax_highlighting_and_error_highlighting.md)
+* [注册文件类型](custom_language_support/registering_file_type.md)
+* [实现词法分析程序](custom_language_support/implementing_lexer.md)
+* [实现解析器和psi](custom_language_support/implementing_parser_and_psi.md)
+* [语法高亮和错误高亮](custom_language_support/syntax_highlighting_and_error_highlighting.md)
 
 ### Resolving and Completion
 
-* [引用和解决](references_and_resolve.md)
+* [引用和解析](references_and_resolve.md)
 * [符号](symbols.md)
 * [声明和引用](declarations_and_references.md)
 * [导航](navigation.md)

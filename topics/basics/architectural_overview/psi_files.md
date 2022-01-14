@@ -2,37 +2,39 @@
 
 <!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
-A PSI (Program Structure Interface) file is the root of a structure representing a file's contents as a hierarchy of elements in a particular programming language.
+PSI(程序结构接口)文件是将文件内容表示为特定编程语言中元素层次结构的结构的根。
 
-The [`PsiFile`](upsource:///platform/core-api/src/com/intellij/psi/PsiFile.java) class is the common base class for all PSI files, while files in a specific language are usually represented by its subclasses.  For example, the [`PsiJavaFile`](upsource:///java/java-psi-api/src/com/intellij/psi/PsiJavaFile.java) class represents a Java file, and the [`XmlFile`](upsource:///xml/xml-psi-api/src/com/intellij/psi/xml/XmlFile.java) class represents an XML file.
+[`PsiFile`](upsource:///platform/core-api/src/com/intellij/psi/PsiFile.java) 类是所有PSI文件的公共基类，而特定语言中的文件通常由其子类表示。
+例如， the [`PsiJavaFile`](upsource:///java/java-psi-api/src/com/intellij/psi/PsiJavaFile.java) 类表示一个Java文件， 而 [`XmlFile`](upsource:///xml/xml-psi-api/src/com/intellij/psi/xml/XmlFile.java) 类则表示一个XML文件。
 
-Unlike `VirtualFile` and `Document`, which have application scope (even if multiple projects are open, each file is represented by the same `VirtualFile` instance), PSI has project scope: the same file is represented by multiple `PsiFile` instances if the file belongs to multiple projects open at the same time.
+不像 `VirtualFile` 和 `Document`，它们有Application Scope (即使多个项目被打开, 每个文件都是同样的 `VirtualFile` 实例)，
+PSI 有Project Scope：如果文件被多个项目同时打开，每个文件都表示不同的 `PsiFile` 实例。
 
-## How do I get a PSI file?
+## 怎么得到了个PSI文件？
 
-* From an Action: `e.getData(CommonDataKeys.PSI_FILE)`.
-* From a VirtualFile: `PsiManager.getInstance(project).findFile()`
-* From a Document: `PsiDocumentManager.getInstance(project).getPsiFile()`
-* From an element inside the file: `PsiElement.getContainingFile()`
-* To find files with a specific name anywhere in the project, use `FilenameIndex.getFilesByName(project, name, scope)`
+* 从Action: `e.getData(CommonDataKeys.PSI_FILE)`.
+* 从VirtualFile: `PsiManager.getInstance(project).findFile()`
+* 从Document: `PsiDocumentManager.getInstance(project).getPsiFile()`
+* 从文件中的一个元素: `PsiElement.getContainingFile()`
+* 在项目中的任何位置查找具有特定名称的文件，使用 `FilenameIndex.getFilesByName(project, name, scope)`
 
-## What can I do with a PSI file?
+## 我能用PSI文件做什么?
 
-Most interesting modification operations are performed on the level of individual PSI elements, not files as a whole.
+大多数有趣的修改操作都是在单个PSI元素的层面上执行的，而不是作为一个整体的文件。
 
-To iterate over the elements in a file, use 
+要迭代文件中的元素，请使用
 
 ```java
-  psiFile.accept(new PsiRecursiveElementWalkingVisitor() { 
-    // visitor implementation ... 
+  psiFile.accept(new PsiRecursiveElementWalkingVisitor() {
+    // visitor implementation ...
   });
 ```
 
-See also [Navigating the PSI](navigating_psi.md).
+另请参阅 [Navigating the PSI](navigating_psi.md).
 
-## Where does a PSI file come from?
+## PSI文件是从哪里来的?
 
-As PSI is language-dependent, PSI files are created using the [`Language`](upsource:///platform/core-api/src/com/intellij/lang/Language.java) instance:
+因为PSI依赖于语言，PSI文件是使用 [`Language`](upsource:///platform/core-api/src/com/intellij/lang/Language.java) 实例创造的：
 
 ```java
   LanguageParserDefinitions.INSTANCE
@@ -40,32 +42,32 @@ As PSI is language-dependent, PSI files are created using the [`Language`](upsou
         .createFile(fileViewProvider);
 ```
 
-Like documents, PSI files are created on-demand when the PSI is accessed for a particular file.
+与文档一样，当针对特定文件访问PSI时，也会按需创建PSI文件。
 
-## How long do PSI files persist?
+## PSI文件能保存多久？
 
-Like documents, PSI files are weakly referenced from the corresponding `VirtualFile` instances and can be garbage-collected if not referenced by anyone.
+像文档一样，PSI文件被相应的`“`VirtualFile`”`实例弱引用，如果没有被任何人引用，就可以被垃圾收集。
 
-## How do I create a PSI file?
+## 如何创建PSI文件?
 
-The [`PsiFileFactory`](upsource:///platform/core-api/src/com/intellij/psi/PsiFileFactory.java) `createFileFromText()` method creates an in-memory PSI file with the specified contents.
+[`PsiFileFactory`](upsource:///platform/core-api/src/com/intellij/psi/PsiFileFactory.java) `createFileFromText()` 方法创建具有指定内容的内存PSI文件。
 
-To save the PSI file to disk, use the [`PsiDirectory`](upsource:///platform/core-api/src/com/intellij/psi/PsiDirectory.java) `add()` method.
+要将PSI文件保存到磁盘，使用 [`PsiDirectory`](upsource:///platform/core-api/src/com/intellij/psi/PsiDirectory.java) `add()` 方法.
 
-## How do I get notified when PSI files change?
+## 当PSI文件发生变化时，我如何得到通知?
 
-`PsiManager.getInstance(project).addPsiTreeChangeListener()` allows you to receive notifications about all changes to the PSI tree of a project.
-Alternatively, register [`PsiTreeChangeListener`](upsource:///platform/core-api/src/com/intellij/psi/PsiTreeChangeListener.java) in `com.intellij.psi.treeChangeListener` extension point.
+`PsiManager.getInstance(project).addPsiTreeChangeListener()` 允许您接收关于项目PSI树的所有更改的通知。
+或者， 注册 [`PsiTreeChangeListener`](upsource:///platform/core-api/src/com/intellij/psi/PsiTreeChangeListener.java) 在 `com.intellij.psi.treeChangeListener` 扩展点中。
 
- > Please see [`PsiTreeChangeEvent`](upsource:///platform/core-api/src/com/intellij/psi/PsiTreeChangeEvent.java) Javadoc for common problems when dealing with PSI events.
+ > 请看 [`PsiTreeChangeEvent`](upsource:///platform/core-api/src/com/intellij/psi/PsiTreeChangeEvent.java) Java文档 处理PSI事件时常见的问题。
   >
   {type="note"}
 
-## How do I extend PSI?
+## 如何扩展PSI?
 
-PSI can be extended to support additional languages through custom language plugins.
-For more details on developing custom language plugins, see the [Custom Language Support](custom_language_support.md) reference guide.
+PSI可以通过自定义语言插件进行扩展，以支持其他语言。
+有关开发自定义语言插件的详细信息，请看 [Custom Language Support](custom_language_support.md) 参考指南。
 
-## What are the rules for working with PSI?
+## PSI的工作规则是什么?
 
-Any changes done to the content of PSI files are reflected in documents, so all [rules for working with documents](documents.md#what-are-the-rules-of-working-with-documents) (read/write actions, commands, read-only status handling) are in effect.
+对PSI文件内容所做的任何更改都反映在文件中，所以所有的 [处理文档的规则](documents.md#what-are-the-rules-of-working-with-documents) (读/写 actions, commands, read-only status handling) 都是生效的。

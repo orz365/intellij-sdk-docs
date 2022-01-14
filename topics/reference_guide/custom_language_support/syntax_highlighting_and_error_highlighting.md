@@ -2,23 +2,23 @@
 
 <!-- Copyright 2000-2021 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
-The class used to specify how a particular range of text should be highlighted is called [`TextAttributesKey`](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java).
-An instance of this class is created for every distinct type of item that should be highlighted (keyword, number, string, etc.).
-The `TextAttributesKey` defines the default attributes applied to items of the corresponding type (for example, keywords are bold, numbers are blue, strings are bold and green).
-Highlighting from multiple `TextAttributesKey` items can be layered - for example, one key may define an item's boldness and another color.
+调用用于指定如何高亮特定文本范围的类 [`TextAttributesKey`](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java).
+对于每个应该高亮显示的不同类型的项目(关键字、数字、字符串等)，都会创建该类的一个实例。
+`TextAttributesKey` 定义了应用于相应类型项目的默认属性(例如，关键字加粗，数字蓝色，字符串加粗和绿色)。
+突出显示多个 `TextAttributesKey` 项目可以分层-例如，一个键可以定义一个项目的粗细和另一种颜色。
 
  > To force re-highlighting (e.g., after changing plugin specific settings), use
  > [`DaemonCodeAnalyzer.restart()`](upsource:///platform/analysis-api/src/com/intellij/codeInsight/daemon/DaemonCodeAnalyzer.java).
  >
  {type="tip"}
 
-## Color Settings
+## 颜色设置
 The mapping of the `TextAttributesKey` to specific attributes used in an editor is defined by the [`EditorColorsScheme`](upsource:///platform/editor-ui-api/src/com/intellij/openapi/editor/colors/EditorColorsScheme.java) class.
 It can be configured by the user by providing an implementation of [`ColorSettingPage`](upsource:///platform/platform-api/src/com/intellij/openapi/options/colors/ColorSettingsPage.java) registered in `com.intellij.colorSettingsPage` extension point.
 
 The _Export to HTML_ feature uses the same syntax highlighting mechanism as the editor, so it will work automatically for custom languages, which provide a syntax highlighter.
 
-**Examples**:
+**示例**:
 - [`ColorSettingsPage`](upsource:///plugins/properties/src/com/intellij/lang/properties/PropertiesColorsPage.java) for [Properties language plugin](upsource:///plugins/properties)
 - [Custom Language Support Tutorial: Color Settings Page](syntax_highlighter_and_color_settings_page.md)
 

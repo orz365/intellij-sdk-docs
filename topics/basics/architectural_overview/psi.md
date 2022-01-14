@@ -4,6 +4,8 @@
 
 The Program Structure Interface, commonly referred to as just PSI, is the layer in the IntelliJ Platform responsible for parsing files and creating the syntactic and semantic code model that powers so many of the platform's features.
 
+程序结构接口(Program Structure Interface，简称PSI)是IntelliJ平台中的一层，负责解析文件，并创建语法和语义代码模型，从而为平台的许多功能提供支持。
+
 * [PSI Files](psi_files.md)
 * [File View Providers](file_view_providers.md)
 * [PSI Elements](psi_elements.md)
